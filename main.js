@@ -20,7 +20,11 @@ class AudioController {
         this.flipSound.play();
     };
     match() {
-        this.matchSound.play();
+        this.matchSound.pause();
+        this.matchSound.currentTime = 0;
+        setTimeout(()=>{
+            this.matchSound.play();
+        },100)
     };
     victory() {
         this.stopMusic();
@@ -54,9 +58,9 @@ class CardGame {
             this.countdown = this.startCountdown();
             this.busy = false;
         }, 500);
-        this.hideCards();
         this.timer.innerText = this.timeRemaining;
         this.ticker.innerText = this.totalClicks;
+        this.hideCards();
     };
     shuffleCards() {
         for(let i = this.cardsArray.length - 1; i > 0;i --){
@@ -64,14 +68,6 @@ class CardGame {
             this.cardsArray[random].style.order = i;
             this.cardsArray[i].style.order = random;
         }
-    };
-    checkForCardMatch(card) {
-        if(this.getCardType(card) === this.getCardType(this.cardToCheck))
-            this.cardMatch(card, this.cardToCheck);
-        else 
-            this.cardMismatch(card, this.cardToCheck);
-
-        this.cardToCheck = null;
     };
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
@@ -116,7 +112,6 @@ class CardGame {
     };
     checkForCardMatch(card) {
         if(this.getCardType(card) === this.getCardType(this.cardToCheck)){
-            console.log('message')
             this.cardMatch(card, this.cardToCheck);
         }else {
             this.cardMismatch(card, this.cardToCheck);
