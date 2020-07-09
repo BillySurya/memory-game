@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js" async></script>
+    <title>Final Fansaty Memory Game</title>
+</head>
+<body>
+    <h1>Card Game</h1>
+    <div class="overlay-text visible">
+        Click to Start
+    </div>
+    <div id="game-over-text" class="overlay-text">
+        GAME OVER
+        <span class="overlay-text-small">Click to Restart</span>
+    </div>
+    <div id="victory-text" class="overlay-text">
+        VICTORY
+        <span class="overlay-text-small">Click to Restart</span>
+    </div>
+    <div class="card-container" style="display:none">
+        <div class="card-info-container">
+            <div class="card-info">
+                Time <span id="time-remaining"> 100 </span>
+            </div>
+            <div class="card-info">
+                Flips <span id="flips"> 0 </span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" id="card-back-image" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/samurai.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-agrias-oaks.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-agrias-oaks.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-bard.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-geomancer-female.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-knight-male.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-bard.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-summoner-male.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-mystic-male.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-geomancer-female.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-summoner-male.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-knight-male.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" id="card-back-image" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/samurai.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-mystic-male.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" id="card-back-image" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-mystic-female.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/fft-mystic-female.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" id="card-back-image" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/finalfantasytactics_conceptart_dcNKu.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/finalfantasytactics_conceptart_dcNKu.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" id="card-back-image" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/finalfantasytactics_conceptart_igfoI.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/finalfantasytactics_conceptart_igfoI.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" id="card-back-image" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/finalfantasytactics_conceptart_nF6Ix.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/finalfantasytactics_conceptart_nF6Ix.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" id="card-back-image" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/finalfantasytactics_conceptart_iyXc5.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+                <img src="assets/card-back.jpg" height="175" width="125" alt="card-back">
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="assets/finalfantasytactics_conceptart_iyXc5.jpg" id="card-front" alt="card-front">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+@font-face {
+    font-family: 'Final-Fantasy';
+    src:  url('assets/Fonts/Jupiter-Pro.ttf')  format('truetype');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100vh;
+}
+
+body {
+    font-family: 'Final-Fantasy';
+    background-image: url('assets/pexels-photo-235985.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    color: black;
+}
+
+h1 {
+    margin: 40px 0 0 0;
+    text-align: center;
+    font-size: 45pt;
+}
+
+.overlay-text {
+    display: none;
+    position: relative;
+    top: 100px;
+    cursor: pointer;
+    margin: 60px 0;
+    text-align: center;
+    font-size: 30pt;
+}
+
+.overlay-text.visible {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-info-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-info {
+    font-size: 20pt;
+    font-weight: 600;
+}
+
+.card-container {
+    margin: 40px;
+    display: grid;
+    grid-template-columns: repeat(8, auto);
+    grid-gap: 10px;
+    justify-content: center;
+    perspective: 500px;
+}
+
+.card {
+    position: relative;
+    width: 125px;
+    border: none;
+    height: 175px;
+}
+
+.card-back img{
+    border: transparent;
+    border: none;
+    border-radius: 10px;
+   
+}
+
+.card-back:hover img {
+    cursor: pointer;
+    animation: scaled 2s linear infinite 100ms;
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    border: none;
+    transition: transform 500ms ease-in-out;
+}
+
+.card-front {
+    background-color: #e5e5e5;
+    border-radius: 10px;
+    border: none;
+    transform: rotateY(180deg);
+}
+
+#card-front{
+    position: relative;
+    width: 105px;
+    height: 155px;
+    filter: brightness(90%)
+}
+
+.card.visible .card-back {
+    transform: rotateY(-180deg);
+}
+  
+.card.visible .card-front {
+    transform: rotateY(0)
+}
+
+@keyframes scaled {
+    0%, 100%{
+        transform: scale(1, 1);
+    }
+    25%, 75%{
+      transform: scale(0.98, 0.98);
+    }
+    50% {
+      transform: scale(0.95, 0.95);
+    }
+}
+
+.card.matched #card-front {
+    animation: selected 1s linear infinite 1000ms;
+}
+
+@keyframes selected {
+    0%, 100%  {
+      transform: rotate(0);
+    }
+    25% {
+      transform: rotate(-2deg);
+    }
+    75% {
+      transform: rotate(2deg);
+    }
+}
+
+@media (max-width: 1100px) {
+    .card-container {
+      grid-template-columns: repeat(4, auto);
+    }
+  
+    .card-info-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+@media (max-width: 600px) {
+    .card-container {
+      grid-template-columns: repeat(2, auto);
+    }
+  
+    .card-info-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
