@@ -5,11 +5,19 @@ class AudioController {
         this.matchSound = new Audio('assets/Audio/905 Job Level Up S.mp3');
         this.victorySound = new Audio('assets/Audio/113 Mission Complete.mp3');
         this.gameOverSound = new Audio('Assets/Audio/133 Game Over.mp3');
-        this.bgMusic.volume = 0.3;
+        this.bgMusic.volume = 0.6;
+        this.flipSound.volume = 0.6;
+        this.matchSound.volume = 0.6;
+        this.victorySound.volume = 0.6;
+        this.gameOverSound.volume = 0.6;
         this.bgMusic.loop = true;
     };
     startMusic() {
+        this.victorySound.pause();
+        this.victorySound.currentTime = 0;
         this.gameOverSound.pause();
+        this.gameOverSound.currentTime = 0;
+
         this.bgMusic.play();
     };
     stopMusic() {
@@ -129,6 +137,10 @@ class CardGame {
         document.getElementsByClassName('card-container')[0].style.display = 'none'
         this.audioController.gameOver();
         document.getElementById('game-over-text').classList.add('visible');
+        this.busy = true;
+        setTimeout(()=>{
+            this.busy = false
+        }, 4000);
     };
     victory() {
         clearInterval(this.countdown);
@@ -153,17 +165,18 @@ if(document.readyState === 'loading'){
 }
 
 function ready() {
-    let button = Array.from(document.getElementsByClassName('overlay-text'));
+    let text = Array.from(document.getElementsByClassName('overlay-text'));
     let cardContainer = document.getElementsByClassName('card-container');
     let card = Array.from(document.getElementsByClassName('card'));
     let game = new CardGame(100, card);
 
-    button.forEach((e, i) => {
+    text.forEach((e, i) => {
         e.addEventListener('click', ()=>{
-            e.classList.remove('visible');
-            cardContainer[0].style.display = "grid";
-            game.startGame();
-            // Audio.startMusic()
+            if(!game.busy){
+                e.classList.remove('visible');
+                cardContainer[0].style.display = "grid";
+                game.startGame();
+            }
         })
     })
 
